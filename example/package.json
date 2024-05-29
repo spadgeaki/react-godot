@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-scripts": "5.0.1",
     "react-godot": "../"
   },
   "devDependencies": {
-    "typescript": "^3.7.4"
+    "typescript": "^5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -23,10 +23,10 @@ const ReactCanvas: FunctionComponent<ReactEngineProps> = ({
   engine,
   pck,
   width = 480,
-  height = 300
+  height = 300,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [instance, setInstance] = useState()
+  const [instance, setInstance] = useState<any>()
   const [loadingState, changeLoadingState] = useLoading()
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const ReactCanvas: FunctionComponent<ReactEngineProps> = ({
         .then(() => {
           changeLoadingState({ mode: "hidden", initialized: true })
         })
-        .catch(err => changeLoadingState(toFailure(err)))
+        .catch((err) => changeLoadingState(toFailure(err)))
 
       instance.setProgressFunc((current, total) => {
         if (total > 0) {

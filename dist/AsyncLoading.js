@@ -16,13 +16,13 @@ var packLoadingReducer = function (state, action) {
         mode: action.mode,
         msg: action.msg,
         percent: action.percent || 0,
-        initializing: !action.initialized
+        initializing: !action.initialized,
     };
     return nextState;
 };
 var LoadingContext = createContext([
     { mode: "", initializing: true },
-    function () { }
+    function () { },
 ]);
 export var useLoading = function () { return useContext(LoadingContext); };
 var Loading = function (_a) {
@@ -44,7 +44,7 @@ var AsyncLoading = function (_a) {
     var children = _a.children;
     var _b = useReducer(packLoadingReducer, {
         mode: "indeterminate",
-        initializing: true
+        initializing: true,
     }), loadingState = _b[0], dispatchLoadingAction = _b[1];
     return (React.createElement(LoadingContext.Provider, { value: [loadingState, dispatchLoadingAction] },
         loadingState.mode !== "hidden" && (React.createElement(Loading, { notice: loadingState.msg, percent: loadingState.percent, indeterminate: loadingState.mode === "indeterminate" })),

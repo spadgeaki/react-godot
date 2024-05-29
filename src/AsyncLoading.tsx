@@ -38,7 +38,7 @@ const packLoadingReducer = (
     mode: action.mode,
     msg: action.msg,
     percent: action.percent || 0,
-    initializing: !action.initialized
+    initializing: !action.initialized,
   }
 
   return nextState
@@ -52,7 +52,7 @@ type LoadingProps = {
 
 const LoadingContext = createContext<[PackLoadingState, PackLoadingDispatch]>([
   { mode: "", initializing: true },
-  () => {}
+  () => {},
 ])
 
 export const useLoading = () => useContext(LoadingContext)
@@ -60,12 +60,15 @@ export const useLoading = () => useContext(LoadingContext)
 const Loading: FunctionComponent<LoadingProps> = ({
   notice,
   percent = 0,
-  indeterminate = false
+  indeterminate = false,
 }) => {
   return (
     <div id="status">
       {indeterminate ? (
-        <div id="status-indeterminate" onContextMenu={e => e.preventDefault()}>
+        <div
+          id="status-indeterminate"
+          onContextMenu={(e) => e.preventDefault()}
+        >
           <div></div>
           <div></div>
           <div></div>
@@ -76,7 +79,7 @@ const Loading: FunctionComponent<LoadingProps> = ({
           <div></div>
         </div>
       ) : (
-        <div id="status-progress" onContextMenu={e => e.preventDefault()}>
+        <div id="status-progress" onContextMenu={(e) => e.preventDefault()}>
           <div
             id="status-progress-inner"
             style={{ width: percent + "%" }}
@@ -92,10 +95,14 @@ const Loading: FunctionComponent<LoadingProps> = ({
   )
 }
 
-const AsyncLoading: FunctionComponent = ({ children }) => {
+export type AsyncLoadingProps = {
+  children: React.ReactNode
+}
+
+const AsyncLoading: FunctionComponent<AsyncLoadingProps> = ({ children }) => {
   const [loadingState, dispatchLoadingAction] = useReducer(packLoadingReducer, {
     mode: "indeterminate",
-    initializing: true
+    initializing: true,
   })
 
   return (

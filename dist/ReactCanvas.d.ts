@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-export declare type ReactEngineProps = {
+export type ReactEngineProps = {
     engine: Engine;
     pck: string;
     width?: number;

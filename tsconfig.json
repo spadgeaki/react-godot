@@ -13,7 +13,8 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": false,
+    "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
